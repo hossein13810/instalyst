@@ -1,0 +1,57 @@
+.user_details_div {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-y: auto;
+}
+
+.user_content_data {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.user_file_div {
+    min-width: 400px;
+}
+
+.user_file_div img, .user_file_div video {
+    vertical-align: middle;
+    height: 100%;
+    width: auto;
+    max-width: 700px;
+    border-radius: 7px;
+}
+
+.user_content_sub_data_div_top {
+    width: 100%;
+    position: absolute;
+    top: 5px;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.user_content_sub_data_div_bottom {
+    width: 100%;
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.user_caption_div {
+    padding: 10px;
+    background-color: var(--color-2);
+    border-radius: 7px;
+    box-sizing: border-box;
+}
+
+.sticky_button {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+

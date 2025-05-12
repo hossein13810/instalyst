@@ -1,0 +1,115 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page_main_back_div {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: url("../images/background.jpg");
+    background-size: 100% 100%;
+    z-index: 0;
+}
+
+.page_blur_div {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(3px);
+    z-index: 1;
+}
+
+.page_main_div {
+    background-color: var(--color-1-60);
+    border-radius: 7px;
+    z-index: 2;
+    box-shadow: 0 0 5em var(--color-2) inset;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.menu_div {
+    width: 250px;
+    background-color: var(--color-1-60);
+    display: flex;
+    flex-direction: column;
+    border-radius: 7px;
+    align-items: center;
+    justify-content: space-between;
+    overflow-y: auto;
+}
+
+.menu_sub_div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page_contents_div {
+    width: calc(100% - 250px);
+    border-radius: 7px;
+}
+
+.icon_div {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon_div img {
+    width: 80%;
+    height: 80%;
+}
+
+.popup_back_div {
+    position: fixed;
+    z-index: 100;
+    background-color: var(--color-1-60);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.popup_div {
+    position: fixed;
+    padding: 10px;
+    background-color: var(--color-1);
+    width: 30%;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    border: 1px solid var(--color-4);
+    z-index: 201;
+    border-radius: 7px;
+    transition: 0.3s ease-in-out;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.ajax_message_div {
+    padding: 15px 7px;
+    position: fixed;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -100%);
+    border-radius: 0 0 7px 7px;
+    transition: 0.3s ease-in-out;
+    z-index: 1000 !important;
+}

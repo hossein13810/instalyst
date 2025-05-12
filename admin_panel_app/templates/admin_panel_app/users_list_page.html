@@ -1,0 +1,40 @@
+{% extends 'base_app/framework_page.html' %}
+
+{% block page_title_block %}Users List Page{% endblock %}
+
+{% load static %}
+
+{% block page_headers_block %}
+    <link rel="stylesheet" href="{% static 'admin_panel_app/css/users_list_page.css' %}">
+    <script src="{% static 'admin_panel_app/js/users_list_page.js' %}"></script>
+{% endblock %}
+
+{% block page_contents_block %}
+    <div class="users_list_table_div">
+        <table class="table_element">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Full Name</th>
+                <th>User Code</th>
+                <th>Last Login</th>
+                <th>Admin Permission</th>
+                <th>Targets List</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in all_users_list %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ user.user_full_name }}</td>
+                    <td>{{ user.user_code }}</td>
+                    <td>{{ user.user_last_login }}</td>
+                    <td>{{ user.user_admin_permission }}</td>
+                    <td><a class="cursor_pointer text_color_5" onclick="load_user_targets_list('{{ user.id }}')">Show</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a class="sticky_button button_element background_color_7 font_1 border_0 text_color_1" href="/add_new_user_page/">Add New User</a>
+    </div>
+{% endblock %}

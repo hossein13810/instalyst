@@ -1,0 +1,46 @@
+{% extends 'base_app/framework_page.html' %}
+
+{% block page_title_block %}Story Details Page{% endblock %}
+
+{% load static %}
+
+{% block page_headers_block %}
+    <link rel="stylesheet" href="{% static 'targets_app/css/story_details_page.css' %}">
+{% endblock %}
+
+{% block page_contents_block %}
+    <div class="w_100 h_100 story_details_div" id="target_details_div">
+        <div class="story_content_data h_100 margin_left_20">
+            <div class="story_content_sub_data_div_top">
+                <div class="font_1 text_color_0 margin_right_10"><span class="font_2 text_color_7">Code: </span><span class="copy_text" onclick="copyText(this)">{{ story_details_data.code }}</span></div>
+            </div>
+            <div class="h_90 story_file_div">
+                {% if story_details_data.video_file == '' %}
+                    <img src="{{ story_details_data.cover_image.url }}" alt="">
+                {% else %}
+                    <video controls>
+                        <source src="{{ story_details_data.video_file.url }}" type="video/mp4">
+                    </video>
+                {% endif %}
+            </div>
+            <div class="story_content_sub_data_div_bottom">
+                <div class="font_1 text_color_0 margin_left_10"><span class="font_2 text_color_7">PK: </span>{{ story_details_data.instagram_pk }}</div>
+                <div class="font_1 text_color_0 margin_right_10"><span class="font_2 text_color_7">ID: </span>{{ story_details_data.instagram_id }}</div>
+            </div>
+        </div>
+        <div class="story_details_data margin_left_20 w_100 h_90">
+            <div class="font_2 text_color_7">Caption:</div>
+            <div class="w_98 story_caption_div margin_bottom_20 border_0">
+                <div class="font_1 text_color_0" dir="auto">{{ story_details_data.caption }}</div>
+            </div>
+            <div class="font_1 text_color_0"><span class="font_2 text_color_7">Taken At: </span>{{ story_details_data.taken_at }}</div>
+            <div class="font_1 text_color_0"><span class="font_2 text_color_7">Expiring At: </span>{{ story_details_data.expiring_at }}</div>
+            <div class="font_1 text_color_0"><span class="font_2 text_color_7">Like And View Counts Disabled: </span>{{ story_details_data.like_and_view_counts_disabled }}</div>
+            <div class="font_1 text_color_0"><span class="font_2 text_color_7">Is Reel Media: </span>{{ story_details_data.is_reel_media }}</div>
+            <div class="font_1 text_color_0"><span class="font_2 text_color_7">Commenting Disabled For Viewer: </span>{{ story_details_data.commenting_disabled_for_viewer }}</div>
+            <div class="font_1 text_color_0"><span class="font_2 text_color_7">Can Viewer Save: </span>{{ story_details_data.can_viewer_save }}</div>
+            <div class="font_1 text_color_0"><span class="font_2 text_color_7">Can Viewer Reshare: </span>{{ story_details_data.can_viewer_reshare }}</div>
+            <div class="font_1 text_color_0"><span class="font_2 text_color_7">Can Reply: </span>{{ story_details_data.can_reply }}</div>
+        </div>
+    </div>
+{% endblock %}

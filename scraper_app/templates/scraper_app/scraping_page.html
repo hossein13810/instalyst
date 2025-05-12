@@ -1,0 +1,59 @@
+{% extends 'base_app/framework_page.html' %}
+
+{% block page_title_block %}Scraping Page{% endblock %}
+
+{% load static %}
+
+{% block page_headers_block %}
+    <link rel="stylesheet" href="{% static 'scraper_app/css/scraping_page.css' %}">
+    <script src="{% static 'scraper_app/js/scraping_page.js' %}"></script>
+{% endblock %}
+
+{% block page_contents_block %}
+    <div class="targets_list_div w_25 h_95">
+        <div class="h_100 targets_list_sub_div" id="targets_list_sub_div">
+            {% for target in all_targets_data %}
+                <div class="one_target_div w_100 background_color_2 margin_bottom_10">
+                    <h3 class="number_counter font_2 text_color_7 h_100">{{ forloop.counter }}</h3>
+                    <div class="check_input_div">
+                        <input id="target_{{ target.instagram_id }}" type="checkbox" aria-label="" {% if target_id == 'all' %}checked{% elif target_id == target.id|stringformat:"s" %}checked{% endif %} onchange="check_all_targets_button_status()">
+                    </div>
+                    <img class="border_7 margin_left_10" src="{{ target.profile_image.url }}" alt="">
+                    <div class="target_username_div font_1 margin_left_20 text_color_0">{{ target.username }}</div>
+                </div>
+            {% endfor %}
+        </div>
+        <button class="sticky_button button_element background_color_2 border_0 font_2 text_color_7" id="check_all_targets_button" onclick="check_all_targets_function(this)"></button>
+    </div>
+    <div class="options_list_div w_35 background_color_2 h_95 border_3">
+        <div class="options_checks_list_div w_100" id="options_check_list_div">
+            <div class="one_option_div check_input_div margin_top_10 margin_left_10">
+                <input id="all_check" type="checkbox" class="check_input_div" aria-label="" checked onchange="check_all_options_function(this)">
+                <label for="all_check" class="font_1 text_color_0">All</label>
+            </div>
+            <div class="one_option_div check_input_div margin_top_20 margin_left_30">
+                <input id="followers_check" type="checkbox" class="check_input_div" aria-label="" checked onchange="check_all_options_check_status()">
+                <label for="followers_check" class="font_1 text_color_0">Followers Data</label><span class="options_details_span"><span class="options_details_span_text font_2" id="followers_options_details">(P_IMG: True)</span><span class="edit_icon" onclick="set_options_details_popup('followers')"></span></span>
+            </div>
+            <div class="one_option_div check_input_div margin_top_20 margin_left_30">
+                <input id="followings_check" type="checkbox" class="check_input_div" aria-label="" checked onchange="check_all_options_check_status()">
+                <label for="followings_check" class="font_1 text_color_0">Followings Data</label><span class="options_details_span"><span class="options_details_span_text font_2" id="followings_options_details">(P_IMG: True)</span><span class="edit_icon" onclick="set_options_details_popup('followings')"></span></span>
+            </div>
+            <div class="one_option_div check_input_div margin_top_20 margin_left_30">
+                <input id="post_and_reels_check" type="checkbox" class="check_input_div" aria-label="" checked onchange="check_all_options_check_status()">
+                <label for="post_and_reels_check" class="font_1 text_color_0">Posts & Reels</label><span class="options_details_span"><span class="options_details_span_text font_2" id="posts_and_reels_options_details">(Download: True ノ Likes: True ノ Comments: True)</span><span class="edit_icon" onclick="set_options_details_popup('posts_and_reels')"></span></span>
+            </div>
+            <div class="one_option_div check_input_div margin_top_20 margin_left_30">
+                <input id="stories_check" type="checkbox" class="check_input_div" aria-label="" checked onchange="check_all_options_check_status()">
+                <label for="stories_check" class="font_1 text_color_0">Stories</label>
+            </div>
+            <div class="one_option_div check_input_div margin_top_20 margin_left_30">
+                <input id="highlights_check" type="checkbox" class="check_input_div" aria-label="" checked onchange="check_all_options_check_status()">
+                <label for="highlights_check" class="font_1 text_color_0">Highlights</label>
+            </div>
+        </div>
+        <button class="button_element background_color_5 font_1 text_color_1 border_none w_90 margin_bottom_20" onclick="start_scraping()" id="strat_scrap_button">Start Scrap</button>
+        <button class="button_element background_color_5 font_1 text_color_1 border_none w_90 margin_bottom_20 display_none" onclick="stop_scraping()" id="stop_scrap_button">Stop Scrap</button>
+    </div>
+    <div class="analyzer_div w_35 h_95 background_color_1 border_3 text_color_7" id="analyzer_div"></div>
+{% endblock %}

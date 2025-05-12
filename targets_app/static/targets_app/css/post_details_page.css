@@ -1,0 +1,145 @@
+.post_details_div {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-y: auto;
+}
+
+.post_content_data {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.slider {
+    position: relative;
+    min-width: 400px;
+}
+
+.dots_div {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.post_content_sub_data_div_top {
+    width: 100%;
+    position: absolute;
+    top: 5px;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.post_content_sub_data_div_bottom {
+    width: 100%;
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.one_counter_div_post {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-right: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.one_counter_div_post:hover {
+    transform: scale(0.9);
+}
+
+.one_counter_div_post img {
+    width: 40px !important;
+    height: 40px !important;
+}
+
+.post_counters_div {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: var(--color-2);
+    border-radius: 7px;
+    box-sizing: border-box;
+}
+
+.post_caption_div {
+    padding: 10px;
+    background-color: var(--color-2);
+    border-radius: 7px;
+    box-sizing: border-box;
+}
+
+.users_list_div, .comments_list_div {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.one_user_div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 7px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.one_comment_div {
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+}
+
+.comment_text_div {
+    background-color: var(--color-3);
+    border-radius: 7px 7px 7px 0;
+    width: 100%;
+    padding: 5px;
+    min-height: 70px;
+}
+
+.comment_date_time {
+    position: absolute;
+    left: 45px;
+    bottom: 5px;
+    font-size: 12px;
+}
+
+.one_user_div img {
+    width: 50px;
+    height: 50px;
+    border-radius: 7px;
+}
+
+.one_comment_div img {
+    width: 30px;
+    height: 30px;
+    border-radius: 7px;
+}
+
+.no_img_div {
+    width: 50px;
+    height: 50px;
+    border-radius: 7px;
+    left: 0;
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-analyze-7);
+    display: none;
+}
+
+.one_user_div:hover {
+    background-color: var(--color-3);
+}
+

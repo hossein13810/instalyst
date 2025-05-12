@@ -1,0 +1,49 @@
+{% extends 'base_app/framework_page.html' %}
+
+{% block page_title_block %}Interactions Graph Page{% endblock %}
+
+{% load static %}
+
+{% block page_headers_block %}
+    <link rel="stylesheet" href="{% static 'analyst_app/css/interactions_graph_page.css' %}">
+
+    <link rel="stylesheet" href="{% static 'analyst_app/css/anychart/anychart_ui.css' %}">
+    <link rel="stylesheet" href="{% static 'analyst_app/css/anychart/anychart_fonts.css' %}">
+
+    <script src="{% static 'analyst_app/js/anychart/anychart_base.js' %}"></script>
+    <script src="{% static 'analyst_app/js/anychart/anychart_data_adapter.js' %}"></script>
+    <script src="{% static 'analyst_app/js/anychart/anychart_exports.js' %}"></script>
+    <script src="{% static 'analyst_app/js/anychart/anychart_graph.js' %}"></script>
+    <script src="{% static 'analyst_app/js/anychart/anychart_ui.js' %}"></script>
+
+    <script src="{% static 'analyst_app/js/interactions_graph_page.js' %}"></script>
+{% endblock %}
+
+{% block page_contents_block %}
+    <input type="hidden" value="{{ target_db_id }}" id="target_db_id">
+    <div class="w_100 h_15 background_color_1_60 top_div" id="layers_radio">
+        <div class="h_100 input_group_div">
+            <label class="font_2 text_color_7" for="layer_1" id="layer_1_label">1 Layer</label>
+            <input class="input_element background_color_4 font_2 border_7 text_color_7" type="radio" name="layer" id="layer_1" checked onclick="show_layer('layer_1')">
+        </div>
+        <div class="h_100 input_group_div">
+            <label class="font_2 text_color_7" for="layer_2" id="layer_2_label">2 Layer</label>
+            <input class="input_element background_color_4 font_2 border_7 text_color_7" type="radio" name="layer" id="layer_2" onclick="show_layer('layer_2')">
+        </div>
+        <div class="h_100 input_group_div">
+            <label class="font_2 text_color_7" for="layer_3" id="layer_3_label">3 Layer</label>
+            <input class="input_element background_color_4 font_2 border_7 text_color_7" type="radio" name="layer" id="layer_3" onclick="show_layer('layer_3')">
+        </div>
+        <div class="h_100 input_group_div">
+            <label class="font_2 text_color_7" for="layer_4" id="layer_4_label">4 Layer</label>
+            <input class="input_element background_color_4 font_2 border_7 text_color_7" type="radio" name="layer" id="layer_4" onclick="show_layer('layer_4')">
+        </div>
+        <div class="h_100 input_group_div">
+            <label class="font_2 text_color_7 margin_left_30" id="layer_total_label">Total Interactions: </label>
+        </div>
+    </div>
+    <div id="container_layer_1" class="w_100 h_85"></div>
+    <div id="container_layer_2" class="w_100 h_85 display_none"></div>
+    <div id="container_layer_3" class="w_100 h_85 display_none"></div>
+    <div id="container_layer_4" class="w_100 h_85 display_none"></div>
+{% endblock %}

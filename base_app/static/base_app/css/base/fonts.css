@@ -1,0 +1,28 @@
+@font-face {
+    font-family: Hello-Doe;
+    src: url("../../fonts/Hello-Doe-Sans.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: Hacked-KerX;
+    src: url("../../fonts/Hacked-KerX.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: Vazir;
+    src: url("../../fonts/Vazir.woff") format('woff');
+}
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+.font_1 {
+    font-family: Hello-Doe, Vazir, serif !important;
+}
+
+.font_2 {
+    font-family: Hacked-KerX, Vazir, serif !important;
+}
+
+.font_3 {
+    font-family: Hello-Doe, Vazir, serif !important;
+}

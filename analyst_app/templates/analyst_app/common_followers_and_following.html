@@ -1,0 +1,83 @@
+{% extends 'base_app/framework_page.html' %}
+
+{% block page_title_block %}Common Followers and Following Page{% endblock %}
+
+{% load static %}
+
+{% block page_headers_block %}
+    <link rel="stylesheet" href="{% static 'analyst_app/css/common_followers_and_following.css' %}">
+    <script src="{% static 'analyst_app/js/common_followers_and_following.js' %}"></script>
+{% endblock %}
+
+{% block page_contents_block %}
+    <div class="w_98 h_100 data_panels_div">
+        <div class="one_data_panel_div">
+            <h3 class="font_2 text_color_7">Common FR FR List</h3>
+            <div class="target_list_div h_100 w_95">
+                {% for key in common_fr_fr_list %}
+                    <div class="one_target_div border_0">
+                        <div class="one_target_info_div">
+                            <div class="number_div font_2 text_color_0 margin_left_10 margin_right_10">{{ forloop.counter }}</div>
+                            <img src="{{ key.profile_image.url }}" alt="">
+                            <span class="font_1 text_color_5 margin_left_10">{{ key.username }}</span>
+                        </div>
+                        <div class="margin_right_10">
+                            <button class="button_element background_color_5 text_color_1 font_1 border_none" onclick="load_popup_data_lists('{{ target_db_id }}', '{{ key.id }}', 'fr_fr')">Show</button>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="one_data_panel_div">
+            <h3 class="font_2 text_color_7">Common FG FG List</h3>
+            <div class="target_list_div h_100 w_95">
+                {% for key in common_fg_fg_list %}
+                    <div class="one_target_div border_0">
+                        <div class="one_target_info_div">
+                            <div class="number_div font_2 text_color_0 margin_left_10 margin_right_10">{{ forloop.counter }}</div>
+                            <img src="{{ key.profile_image.url }}" alt="">
+                            <span class="font_1 text_color_5 margin_left_10">{{ key.username }}</span>
+                        </div>
+                        <div class="margin_right_10">
+                            <button class="button_element background_color_5 text_color_1 font_1 border_none" onclick="load_popup_data_lists('{{ target_db_id }}', '{{ key.id }}', 'fg_fg')">Show</button>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="one_data_panel_div">
+            <h3 class="font_2 text_color_7">Common FR FG List</h3>
+            <div class="target_list_div h_100 w_95">
+                {% for key in common_fr_fg_list%}
+                    <div class="one_target_div border_0">
+                        <div class="one_target_info_div">
+                            <div class="number_div font_2 text_color_0 margin_left_10 margin_right_10">{{ forloop.counter }}</div>
+                            <img src="{{ key.profile_image.url }}" alt="">
+                            <span class="font_1 text_color_5 margin_left_10">{{ key.username }}</span>
+                        </div>
+                        <div class="margin_right_10">
+                            <button class="button_element background_color_5 text_color_1 font_1 border_none" onclick="load_popup_data_lists('{{ target_db_id }}', '{{ key.id }}', 'fr_fg')">Show</button>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="one_data_panel_div">
+            <h3 class="font_2 text_color_7">Common FG FR List</h3>
+            <div class="target_list_div h_100 w_95">
+                {% for key in common_fg_fr_list %}
+                    <div class="one_target_div border_0">
+                        <div class="one_target_info_div">
+                            <div class="number_div font_2 text_color_0 margin_left_10 margin_right_10">{{ forloop.counter }}</div>
+                            <img src="{{ key.profile_image.url }}" alt="">
+                            <span class="font_1 text_color_5 margin_left_10">{{ key.username }}</span>
+                        </div>
+                        <div class="margin_right_10">
+                            <button class="button_element background_color_5 text_color_1 font_1 border_none" onclick="load_popup_data_lists('{{ target_db_id }}', '{{ key.id }}', 'fg_fr')">Show</button>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

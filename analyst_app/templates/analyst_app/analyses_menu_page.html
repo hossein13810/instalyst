@@ -1,0 +1,34 @@
+{% extends 'base_app/framework_page.html' %}
+
+{% block page_title_block %}Analyses Menu Page{% endblock %}
+
+{% load static %}
+
+{% block page_headers_block %}
+    <link rel="stylesheet" href="{% static 'analyst_app/css/analyses_menu_page.css' %}">
+{% endblock %}
+
+{% block page_contents_block %}
+    <div class="w_98 h_100 analyses_menu_options_div">
+        <a class="one_option_div" href="/common_followers_and_following_page/id_{{ target_db_id }}/">
+            <img src="{% static 'analyst_app/icons/common.png' %}" alt="">
+            <p class="font_2 text_color_7">Common Followers and Following</p>
+        </a>
+        <a class="one_option_div" href="/interactions_graph_page/id_{{ target_db_id }}/">
+            <img src="{% static 'analyst_app/icons/interaction.png' %}" alt="">
+            <p class="font_2 text_color_7">Interactions analysis</p>
+        </a>
+        <a class="one_option_div" href="/duplicate_names_page/id_{{ target_db_id }}/">
+            <img src="{% static 'analyst_app/icons/name.png' %}" alt="">
+            <p class="font_2 text_color_7">Duplicate names</p>
+        </a>
+        <a class="one_option_div" href="/intractions_timeline_page/id_{{ target_db_id }}/mode_time/">
+            <img src="{% static 'analyst_app/icons/timeline.png' %}" alt="">
+            <p class="font_2 text_color_7">Interactions timeline</p>
+        </a>
+        <a class="one_option_div w_100" href="/captions_analysis_page/id_{{ target_db_id }}/">
+            <img src="{% static 'analyst_app/icons/caption.png' %}" alt="">
+            <p class="font_2 text_color_7">Captions analysis</p>
+        </a>
+    </div>
+{% endblock %}

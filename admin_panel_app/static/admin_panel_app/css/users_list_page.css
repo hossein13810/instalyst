@@ -1,0 +1,63 @@
+.users_list_table_div {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.table_element {
+    width: 95%;
+    text-align: center;
+    font-family: Hello-Doe, Vazir, serif;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-top: 20px;
+}
+
+.table_element thead tr th {
+    background-color: var(--color-4);
+    padding: 10px 0;
+    border-radius: 7px;
+    color: var(--color-7);
+}
+
+.table_element tbody tr td {
+    height: 30px;
+    background-color: var(--color-0);
+    padding: 5px 0;
+    border-radius: 7px;
+    color: var(--color-1);
+}
+
+.sticky_button {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+.number_td {
+    min-width: 30px !important;
+}
+
+.table_image_td {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px !important;
+}
+
+.table_image_div {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+}
+
+.table_image_div img {
+    width: 100%;
+    height: 100%;
+    border-radius: 7px;
+}

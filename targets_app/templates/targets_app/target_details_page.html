@@ -1,0 +1,86 @@
+{% extends 'base_app/framework_page.html' %}
+
+{% block page_title_block %}Target Details Page{% endblock %}
+
+{% load static %}
+
+{% block page_headers_block %}
+    <link rel="stylesheet" href="{% static 'targets_app/css/target_details_page.css' %}">
+    <script src="{% static 'targets_app/js/target_details_page.js' %}"></script>
+{% endblock %}
+
+{% block page_contents_block %}
+    <input type="hidden" id="target_db_id_input" value="{{ target_details_data.id }}">
+    <div class="w_100 h_100 target_details_div" id="target_details_div" onscroll="on_posts_scroll()">
+        <div class="target_details_div_1 w_98">
+            <div class="target_image_div">
+                <img src="{{ target_details_data.profile_image.url }}" alt="">
+            </div>
+            <div class="target_info_div h_100">
+                <div class="target_info_div_1 h_100">
+                    <div class="target_one_info_div">
+                        <h4 class="text_color_0 font_1">{{ target_details_data.instagram_id }}</h4>
+                    </div>
+                    <div class="target_one_info_div">
+                        <h4 class="text_color_0 font_1">{{ target_details_data.full_name }}</h4>
+                    </div>
+                    <div class="target_one_info_div">
+                        <h4 class="text_color_0 font_1">{{ target_details_data.username }}</h4>
+                        {% if target_details_data.is_verified == 'True' %}
+                            <svg aria-label="Verified" class="x1lliihq x1n2onr6 margin_left_10" fill="rgb(0, 149, 246)" height="18" role="img" viewBox="0 0 40 40" width="18"><title>Verified</title>
+                                <path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z" fill-rule="evenodd"></path>
+                            </svg>
+                        {% endif %}
+                    </div>
+                    <div class="target_one_info_div">
+                        <h4 class="text_color_0 font_1">{{ target_details_data.category }}</h4>
+                    </div>
+                </div>
+                <div class="target_info_div_2">
+                    <div class="target_biography_div h_100 background_color_1_60">
+                        <p class="text_color_6 font_3 margin_0" dir="auto">{{ target_details_data.biography }}</p>
+                    </div>
+                    <div class="target_info_counter_div h_100 background_color_1_60">
+                        <button class="target_info_counter_button_none">
+                            <div class="one_counter_div">
+                                <h2 class="font_2 text_color_7">Posts</h2>
+                                <h3 class="font_2 text_color_0">{{ target_details_data.media_count }}</h3>
+                            </div>
+                        </button>
+                        <button class="target_info_counter_button" onclick="set_stories_popup_contents()">
+                            <div class="one_counter_div">
+                                <h2 class="font_2 text_color_7">Stories</h2>
+                                <h3 class="font_2 text_color_0">{{ target_stories_len }}</h3>
+                            </div>
+                        </button>
+                        <button class="target_info_counter_button" onclick="set_followers_followings_popup_contents('followers')">
+                            <div class="one_counter_div">
+                                <h2 class="font_2 text_color_7">Followers</h2>
+                                <h3 class="font_2 text_color_0">{{ target_details_data.follower_count }}</h3>
+                            </div>
+                        </button>
+                        <button class="target_info_counter_button" onclick="set_followers_followings_popup_contents('followings')">
+                            <div class="one_counter_div">
+                                <h2 class="font_2 text_color_7">Followings</h2>
+                                <h3 class="font_2 text_color_0">{{ target_details_data.following_count }}</h3>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="target_details_div_2 w_98">
+            <div class="highlight_long_div" id="highlight_long_div">
+                {% for highlight in target_highlights_data %}
+                    <div class="one_highlight_div border_0" onclick="load_highlight_stories_data('{{ highlight.id }}', 1)">
+                        <div class="highlight_title_div font_1 text_color_0">{{ highlight.title }}</div>
+                        <img src="/files/{{ highlight.cover_image }}" alt="">
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+        <div class="target_details_div_3 w_98 margin_top_20" id="target_posts_list_div"></div>
+    </div>
+    <a class="sticky_button button_element background_color_7 font_1 border_0 text_color_1" href="/scraping_page/id_{{ target_details_data.id }}/">Start Scrap</a>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'base_app/framework_page.html' %}
+
+{% block page_title_block %}Post Details Page{% endblock %}
+
+{% load static %}
+
+{% block page_headers_block %}
+    <link rel="stylesheet" href="{% static 'targets_app/css/post_details_page.css' %}">
+    <link rel="stylesheet" media="all" href="{% static 'targets_app/slider/style.css' %}"/>
+    <script src="{% static 'targets_app/slider/script.js' %}"></script>
+    <script src="{% static 'targets_app/js/post_details_page.js' %}"></script>
+{% endblock %}
+
+{% block page_contents_block %}
+    <div class="w_100 h_100 post_details_div" id="target_details_div">
+        <div class="post_content_data h_100 margin_left_20">
+            <div class="post_content_sub_data_div_top">
+                <div class="font_1 text_color_0 margin_left_10"><span class="font_2 text_color_7">Taken At: </span>{{ post_details_data.taken_at }}</div>
+                <div class="font_1 text_color_0 margin_right_10"><span class="font_2 text_color_7">Code: </span><span class="copy_text" onclick="copyText(this)">{{ post_details_data.code }}</span></div>
+            </div>
+            <div class="slider h_90">
+                <div class="slideshow-container h_100">
+                    {% for post_content in post_contents_data %}
+                        <div class="mySlides fade">
+                            <div class="numbertext font_2">{{ forloop.counter }} / {{ post_contents_data|length }}</div>
+                            {% if 'jpg' in post_content.content_file.url %}
+                                <img src="{{ post_content.content_file.url }}" alt="">
+                            {% elif 'mp4' in post_content.content_file.url %}
+                                <video controls>
+                                    <source src="{{ post_content.content_file.url }}" type="video/mp4">
+                                </video>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                    {% if post_contents_data|length > 1 %}
+                        <a class="prev" onclick="plusSlides(-1)">❮</a>
+                        <a class="next" onclick="plusSlides(1)">❯</a>
+                    {% endif %}
+                </div>
+                <div class="dots_div">
+                    {% for post_content in post_contents_data %}
+                        <span class="dot" onclick="currentSlide({{ forloop.counter }})"></span>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="post_content_sub_data_div_bottom">
+                <div class="font_1 text_color_0 margin_left_10"><span class="font_2 text_color_7">PK: </span>{{ post_details_data.post_pk }}</div>
+                <div class="font_1 text_color_0 margin_right_10"><span class="font_2 text_color_7">ID: </span>{{ post_details_data.post_id }}</div>
+            </div>
+        </div>
+        <div class="post_details_data margin_left_20 w_100 h_90">
+            <div class="w_98 post_counters_div margin_bottom_20 border_0">
+                <div class="one_counter_div_post margin_top_10" onclick="load_post_likes_data('{{ post_details_data.id }}')">
+                    <img src="{% static 'targets_app/icons/like.png' %}" alt="">
+                    <h3 class="font_2 text_color_7 margin_top_10 margin_bottom_10">{{ post_details_data.like_count }}</h3>
+                </div>
+                <div class="one_counter_div_post margin_top_10" onclick="load_post_comments_data('{{ post_details_data.id }}')">
+                    <img src="{% static 'targets_app/icons/comment.png' %}" alt="">
+                    <h3 class="font_2 text_color_7 margin_top_10 margin_bottom_10">{{ post_details_data.comment_count }}</h3>
+                </div>
+            </div>
+            <div class="font_2 text_color_7">Caption:</div>
+            <div class="w_98 post_caption_div margin_bottom_20 border_0">
+                <div class="font_1 text_color_0" dir="auto">{{ post_details_data.caption }}</div>
+            </div>
+            <div class="font_1 text_color_0"><span class="font_2 text_color_7">Caption Is Edited: </span>{{ post_details_data.caption_is_edited }}</div>
+            <div class="font_1 text_color_0"><span class="font_2 text_color_7">Share Count Disabled: </span>{{ post_details_data.share_count_disabled }}</div>
+            <div class="font_1 text_color_0"><span class="font_2 text_color_7">Like And View Counts Disabled: </span>{{ post_details_data.like_and_view_counts_disabled }}</div>
+            <div class="font_1 text_color_0"><span class="font_2 text_color_7">Is Quiet Post: </span>{{ post_details_data.is_quiet_post }}</div>
+            <div class="font_1 text_color_0"><span class="font_2 text_color_7">Has Privately Liked: </span>{{ post_details_data.has_privately_liked }}</div>
+            <div class="font_1 text_color_0"><span class="font_2 text_color_7">Can Reply: </span>{{ post_details_data.can_reply }}</div>
+            <div class="font_1 text_color_0"><span class="font_2 text_color_7">Can Viewer Save: </span>{{ post_details_data.can_viewer_save }}</div>
+            <div class="font_1 text_color_0"><span class="font_2 text_color_7">Can Viewer Reshare: </span>{{ post_details_data.can_viewer_reshare }}</div>
+        </div>
+    </div>
+{% endblock %}

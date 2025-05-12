@@ -1,0 +1,16 @@
+{% extends 'base_app/framework_page.html' %}
+
+{% block page_title_block %}Targets List Page{% endblock %}
+
+{% load static %}
+
+{% block page_headers_block %}
+    <link rel="stylesheet" href="{% static 'targets_app/css/targets_list_page.css' %}">
+    <script src="{% static 'targets_app/js/targets_list_page.js' %}"></script>
+{% endblock %}
+
+{% block page_contents_block %}
+    <input value="{{ target_user_name }}" type="hidden" id="target_user_name">
+    <div class="w_100 h_100 targets_list_div" id="targets_list_div"></div>
+    <button class="sticky_button button_element background_color_7 font_1 border_0" onclick="show_add_new_target_popup()">Add New Target</button>
+{% endblock %}

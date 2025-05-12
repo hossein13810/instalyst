@@ -1,0 +1,9 @@
+.input_group_div {
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.top_div {
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,0 +1,27 @@
+{% extends 'base_app/framework_page.html' %}
+
+{% block page_title_block %}Duplicate Names Page{% endblock %}
+
+{% load static %}
+
+{% block page_headers_block %}
+    <link rel="stylesheet" href="{% static 'analyst_app/css/duplicate_names_page.css' %}">
+    <script src="{% static 'analyst_app/js/bar_chart.js' %}"></script>
+    <script src="{% static 'analyst_app/js/duplicate_names_page.js' %}"></script>
+
+{% endblock %}
+
+{% block page_contents_block %}
+    <input type="hidden" value="{{ target_db_id }}" id="target_db_id">
+    <div class="w_100 h_15 background_color_1_60 top_div">
+        <div class="w_48 h_100 input_group_div">
+            <label class="font_2 text_color_7">Char Len:</label>
+            <input class="input_element background_color_4 font_2 border_7 text_color_7" aria-label="" value="4" type="number" min="1" id="char_len" onchange="get_names_data()">
+        </div>
+        <div class="w_48 h_100 input_group_div">
+            <label class="font_2 text_color_7">Word Len:</label>
+            <input class="input_element background_color_4 font_2 border_7 text_color_7" aria-label="" value="10" type="number" min="1" id="word_len" onchange="get_names_data()">
+        </div>
+    </div>
+    <canvas id="myBarChart" class="w_100 h_85"></canvas>
+{% endblock %}

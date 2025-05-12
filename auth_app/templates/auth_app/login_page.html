@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Users</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'base_app/icons/instagram.ico' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/colors.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/borders.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/elements.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/margins.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/sizes.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/framework_page.css' %}">
+    <link rel="stylesheet" href="{% static 'auth_app/css/login_page.css' %}">
+    <script src="{% static 'base_app/js/base.js' %}"></script>
+</head>
+<body>
+
+<div class="page_main_back_div"></div>
+<div class="page_blur_div"></div>
+
+<div class="login_div h_100">
+    <div class="icon_div margin_top_10 margin_bottom_10">
+        <img src="{% static 'base_app/icons/instagram.png' %}" alt="">
+    </div>
+    <h1 class="font_2 text_color_0 letter-spacing_5">Login Users</h1>
+    <form class="w_90" method="post" action="/login_users/">
+        {% csrf_token %}
+        <div class="input_group_div w_100 margin_top_20 margin_bottom_20">
+            <label class="font_2 text_color_5">User Code:</label>
+            <input class="input_element background_color_3 border_5 text_color_5 font_1" aria-label="" autofocus name="user_code_input" autocomplete="off">
+        </div>
+        <div class="input_group_div w_100 margin_top_20 margin_bottom_20">
+            <label class="font_2 text_color_5">Password:</label>
+            <input type="password" class="input_element background_color_3 border_5 text_color_5 font_1" aria-label="" autofocus name="password_input" autocomplete="off">
+        </div>
+        <button type="submit" class="button_element background_color_5 w_100 font_1 border_none margin_top_10">Login</button>
+    </form>
+</div>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="message_div font_1 background_color_1 message_{{ message.tags }}" id="message_div">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <script>
+        hide_messages_div('message_div');
+    </script>
+{% endif %}
+
+</body>
+</html>

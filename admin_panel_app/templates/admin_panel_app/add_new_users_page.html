@@ -1,0 +1,37 @@
+{% extends 'base_app/framework_page.html' %}
+
+{% block page_title_block %}Users List Page{% endblock %}
+
+{% load static %}
+
+{% block page_headers_block %}
+    <link rel="stylesheet" href="{% static 'admin_panel_app/css/add_new_user_page.css' %}">
+{% endblock %}
+
+{% block page_contents_block %}
+    <div class="inputs_div w_95">
+        <form action="/add_new_user_page/" method="post" class="w_100">
+            {% csrf_token %}
+            <div class="input_group_div">
+                <label for="user_full_name_input" class="font_1 text_color_7">User Full Name:</label>
+                <input id="user_full_name_input" name="user_full_name_input" class="input_element background_color_4 text_color_0 font_1 border_7 margin_top_10" autocomplete="off" autofocus>
+            </div>
+            <div class="input_group_div margin_top_20">
+                <label for="user_code_input" class="font_1 text_color_7">User Code:</label>
+                <input id="user_code_input" name="user_code_input" class="input_element background_color_4 text_color_0 font_1 border_7 margin_top_10" autocomplete="off">
+            </div>
+            <div class="input_group_div margin_top_20">
+                <label for="user_password_input" class="font_1 text_color_7">Password:</label>
+                <input type="password" id="user_password_input" name="user_password_input" class="input_element background_color_4 text_color_0 font_1 border_7 margin_top_10" autocomplete="off">
+            </div>
+            <div class="margin_top_20">
+                <input id="user_admin_permission_input" name="user_admin_permission_input" type="checkbox">
+                <label for="user_admin_permission_input" class="font_1 text_color_7 cursor_pointer">Admin Permission</label>
+            </div>
+            <div class="button_group_div margin_top_20">
+                <button class="button_element background_color_3 text_color_7 border_7 font_1 w_48">Back</button>
+                <button class="button_element background_color_7 text_color_4 border_none font_1 w_48">Save</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

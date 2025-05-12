@@ -1,0 +1,21 @@
+{% extends 'base_app/framework_page.html' %}
+
+{% block page_title_block %}Interactions Graph Page{% endblock %}
+
+{% load static %}
+
+{% block page_headers_block %}
+    <link rel="stylesheet" href="{% static 'analyst_app/css/interactions_timeline_page.css' %}">
+    <script src="{% static 'analyst_app/js/bar_chart.js' %}"></script>
+    <script src="{% static 'analyst_app/js/interactions_timeline_page.js' %}"></script>
+{% endblock %}
+
+{% block page_contents_block %}
+    <input type="hidden" value="{{ target_db_id }}" id="target_db_id">
+    <input type="hidden" value="{{ chart_mode }}" id="chart_mode">
+    <div class="w_100 h_10 background_color_1_60 buttons_group">
+        <a href="/intractions_timeline_page/id_{{ target_db_id }}/mode_time/" class="button_element w_48 font_2 border_7 text_color_7 {% if chart_mode == 'time' %}background_color_3{% else %}background_color_4{% endif %}">Times Line</a>
+        <a href="/intractions_timeline_page/id_{{ target_db_id }}/mode_day/" class="button_element w_48 font_2 border_7 text_color_7 {% if chart_mode == 'day' %}background_color_3{% else %}background_color_4{% endif %}">Day Line</a>
+    </div>
+    <canvas id="myLineChart" class="w_100 h_90"></canvas>
+{% endblock %}

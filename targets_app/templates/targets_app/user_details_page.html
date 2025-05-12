@@ -1,0 +1,29 @@
+{% extends 'base_app/framework_page.html' %}
+
+{% block page_title_block %}User Details Page{% endblock %}
+
+{% load static %}
+
+{% block page_headers_block %}
+    <link rel="stylesheet" href="{% static 'targets_app/css/user_details_page.css' %}">
+    <script src="{% static 'targets_app/js/user_details_page.js' %}"></script>
+{% endblock %}
+
+{% block page_contents_block %}
+    <input type="hidden" value="{{ user_details_data.instagram_id }}" id="instagram_id">
+    <div class="w_100 h_100 user_details_div" id="target_details_div">
+        <div class="user_content_data h_100 margin_left_20">
+            <div class="h_90 user_file_div">
+                <img src="" alt="" id="profile_image">
+            </div>
+        </div>
+        <div class="user_details_data margin_left_20 w_100 h_90">
+            <div class="font_1 text_color_0"><span class="font_2 text_color_7">ID: </span>{{ user_details_data.instagram_id }}</div>
+            <div class="font_1 text_color_0"><span class="font_2 text_color_7">UserName: </span>{{ user_details_data.username }}</div>
+            <div class="font_1 text_color_0"><span class="font_2 text_color_7">Full Name: </span>{{ user_details_data.full_name }}</div>
+            <div class="font_1 text_color_0"><span class="font_2 text_color_7">Is Private: </span>{{ user_details_data.is_private }}</div>
+            <div class="font_1 text_color_0"><span class="font_2 text_color_7">Is Verified: </span>{{ user_details_data.is_verified }}</div>
+        </div>
+    </div>
+    <a class="sticky_button button_element background_color_7 font_1 border_0 text_color_1" href="/targets_list_page/?target_user_name={{ user_details_data.username }}">Add As Target</a>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block page_title_block %}{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'base_app/icons/instagram.ico' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/colors.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/borders.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/elements.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/margins.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/base/sizes.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/framework_page.css' %}">
+    <script src="{% static 'base_app/js/base.js' %}"></script>
+    <script src="{% static 'base_app/js/jquery.js' %}"></script>
+    {% block page_headers_block %}{% endblock %}
+</head>
+<body>
+
+<div class="page_main_back_div"></div>
+<div class="page_blur_div"></div>
+
+<div class="page_main_div w_98 h_95">
+    <div class="menu_div h_100">
+        <div class="menu_sub_div w_90">
+            <div class="icon_div margin_top_10">
+                <img src="{% static 'base_app/icons/instagram.png' %}" alt="">
+            </div>
+            <h1 class="text_color_0 font_2 letter-spacing_5">Instalyst</h1>
+            <a href="/targets_list_page/" class="button_element font_2 w_100 margin_top_10 margin_bottom_10 {% if page_name == 'targets_list_page' %}background_color_7 text_color_4{% else %}background_color_4 text_color_7{% endif %}">Targets List</a>
+            <a href="/scraping_page/id_all/" class="button_element font_2 w_100 margin_top_10 margin_bottom_10 {% if page_name == 'scraping_page' %}background_color_7 text_color_4{% else %}background_color_4 text_color_7{% endif %}">Scraping</a>
+            <a href="/analyst_targets_list_page/" class="button_element font_2 w_100 margin_top_10 margin_bottom_10 {% if page_name == 'analyses_page' %}background_color_7 text_color_4{% else %}background_color_4 text_color_7{% endif %}">Analyses</a>
+            {% if user_data.user_admin_permission == 'on' %}
+                <a href="/users_list_page/" class="button_element font_2 w_100 margin_top_10 margin_bottom_10 {% if page_name == 'users_list_page' %}background_color_7 text_color_4{% else %}background_color_4 text_color_7{% endif %}">Users List</a>
+            {% endif %}
+            <a href="/settings_page/" class="button_element font_2 w_100 margin_top_10 margin_bottom_10 {% if page_name == 'settings_page' %}background_color_7 text_color_4{% else %}background_color_4 text_color_7{% endif %}">Settings</a>
+        </div>
+        <button class="button_element w_90 background_color_5 font_2 margin_bottom_10 border_none" onclick="logout()">Logout</button>
+    </div>
+    <div class="page_contents_div h_100">
+        {% block page_contents_block %}{% endblock %}
+    </div>
+</div>
+
+<div class="popup_back_div" id="popup_back_div" onclick="show_hide_popup('hide')"></div>
+<div class="popup_back_div" id="popup_back_div_disable"></div>
+<div class="popup_div" id="popup_div"></div>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="message_div font_1 background_color_1 message_{{ message.tags }}" id="message_div">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <script>
+        hide_messages_div('message_div');
+    </script>
+{% endif %}
+
+<div class="ajax_message_div font_1 background_color_1" id="ajax_message_div"></div>
+
+</body>
+</html>

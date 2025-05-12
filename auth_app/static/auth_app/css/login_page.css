@@ -1,0 +1,11 @@
+.login_div {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 300px;
+    background-color: var(--color-1-60);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
